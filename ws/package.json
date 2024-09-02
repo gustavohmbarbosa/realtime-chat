@@ -1,0 +1,30 @@
+{
+  "name": "ws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "test": "npx vitest"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ws": "^8.5.12",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "bullmq": "^5.12.12",
+    "dotenv": "^16.4.5",
+    "ioredis": "^5.4.1",
+    "mongodb": "^6.8.0",
+    "tsx": "^4.19.0",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  }
+}
