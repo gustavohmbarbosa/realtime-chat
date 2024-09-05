@@ -4,11 +4,12 @@ type ChatSidebarProps = {
   contacts: { name: string; lastMessage: string; date: string }[];
   selectedContact: string;
   onSelect: (contact: string) => void;
+  isVisible: boolean;
 };
 
-const ChatSidebar: React.FC<ChatSidebarProps> = ({ contacts, selectedContact, onSelect }) => {
+const ChatSidebar: React.FC<ChatSidebarProps> = ({ contacts, selectedContact, onSelect, isVisible }) => {
   return (
-    <div className="w-full md:w-1/4 bg-gray-800 border-r border-gray-700 overflow-y-auto" id="chatSideBar">
+    <div className={`w-full ${ isVisible ? "md:w-1/3" : "hidden"} bg-gray-800 border-r border-gray-700 overflow-y-auto`}>
       <div className="p-4">
         <input
           type="text"
