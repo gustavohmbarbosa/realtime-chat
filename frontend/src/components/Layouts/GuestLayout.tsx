@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const GuestLayout = ({ children }) => {
+const GuestLayout = ({ children }: any) => {
     return (
         <div>
             <Head>

@@ -1,4 +1,4 @@
-const AuthSessionStatus = ({ status, className, ...props }) => (
+const AuthSessionStatus = ({ status, className, ...props }: any) => (
     <>
         {status && (
             <div

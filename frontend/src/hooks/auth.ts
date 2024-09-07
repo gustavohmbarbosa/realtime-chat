@@ -1,12 +1,12 @@
 import useSWR from 'swr'
 import axios from '@/lib/axios'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-interface useAuthProps {
-    middleware?: 'guest' | 'auth'
-    redirectIfAuthenticated?: string
-}
+type useAuthProps = {
+    middleware?: 'guest' | 'auth';
+    redirectIfAuthenticated?: string;
+};
 
 export const useAuth = ({
     middleware,
@@ -27,7 +27,7 @@ export const useAuth = ({
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-    const register = async ({ setErrors, ...props }) => {
+    const register = async ({ setErrors, ...props }: any) => {
         await csrf()
 
         setErrors([])
@@ -42,7 +42,7 @@ export const useAuth = ({
             })
     }
 
-    const login = async ({ setErrors, setStatus, ...props }) => {
+    const login = async ({ setErrors, setStatus, ...props }: any) => {
         await csrf()
 
         setErrors([])
@@ -58,7 +58,7 @@ export const useAuth = ({
             })
     }
 
-    const forgotPassword = async ({ setErrors, setStatus, email }) => {
+    const forgotPassword = async ({ setErrors, setStatus, email }: any) => {
         await csrf()
 
         setErrors([])
@@ -74,7 +74,7 @@ export const useAuth = ({
             })
     }
 
-    const resetPassword = async ({ setErrors, setStatus, ...props }) => {
+    const resetPassword = async ({ setErrors, setStatus, ...props }: any) => {
         await csrf()
 
         setErrors([])
@@ -92,30 +92,36 @@ export const useAuth = ({
             })
     }
 
-    const resendEmailVerification = ({ setStatus }) => {
+    const resendEmailVerification = ({ setStatus }: any) => {
         axios
             .post('/email/verification-notification')
             .then(response => setStatus(response.data.status))
     }
 
-    const logout = async () => {
+    const logout = useCallback(async () => {
         if (!error) {
             await axios.post('/logout').then(() => mutate())
         }
 
         window.location.pathname = '/login'
-    }
+    }, [error, mutate])
 
     useEffect(() => {
-        if (middleware === 'guest' && redirectIfAuthenticated && user)
+        if (middleware === 'guest' && redirectIfAuthenticated && user) {
             router.push(redirectIfAuthenticated)
+        }
+
         if (
             window.location.pathname === '/verify-email' &&
             user?.email_verified_at
-        )
-            router.push(redirectIfAuthenticated)
-        if (middleware === 'auth' && error) logout()
-    }, [user, error])
+        ) {
+            router.push(redirectIfAuthenticated as any)
+        }
+        
+        if (middleware === 'auth' && error) {
+            logout()
+        }
+    }, [user, error, router, redirectIfAuthenticated, middleware, logout])
 
     return {
         user,

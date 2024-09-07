@@ -17,7 +17,7 @@ const ForgotPassword = () => {
     const [errors, setErrors] = useState<any>([])
     const [status, setStatus] = useState<any>(null)
 
-    const submitForm = event => {
+    const submitForm = (event: any) => {
         event.preventDefault()
 
         forgotPassword({ email, setErrors, setStatus })
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                             name="email"
                             value={email}
                             className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
+                            onChange={(event: any) => setEmail(event.target.value)}
                             required
                             autoFocus
                         />

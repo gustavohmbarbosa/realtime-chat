@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Menu } from '@headlessui/react'
 
-const DropdownLink = ({ children, ...props }) => (
+const DropdownLink = ({ children, ...props }: any) => (
     <Menu.Item>
         {({ active }) => (
             <Link
@@ -15,7 +15,7 @@ const DropdownLink = ({ children, ...props }) => (
     </Menu.Item>
 )
 
-export const DropdownButton = ({ children, ...props }) => (
+export const DropdownButton = ({ children, ...props }: any) => (
     <Menu.Item>
         {({ active }) => (
             <button

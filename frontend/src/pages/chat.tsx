@@ -6,7 +6,7 @@ import { useChatStore } from '@/store/userChatStore'
 import { Contact } from '@/types'
 
 function ChatPage() {
-    const [loading, setLoading] = useState(true)
+    // const [loading, setLoading] = useState(true)
 
     const [sidebarVisible, setSidebarVisible] = useState(true)
     const [isDesktopView, setIsDesktopView] = useState(true)
@@ -68,7 +68,7 @@ function ChatPage() {
                 })
             }
         },
-        [ws, selectedContact],
+        [ws, selectedContact, addMessage],
     )
 
     useEffect(() => {
@@ -116,137 +116,137 @@ function ChatPage() {
         }
 
         setWs(socket)
-    }, [selectedContact])
+    }, [ws, setWs, selectedContact, addMessage])
 
-    const fetchContacts = async () => {
-        try {
-            //   const response = await fetch('/api/contacts');
-            //   const data: Contact[] = await response.json();
-            const arr = [
-                {
-                    id: '87991646160',
-                    name: 'Brenda Duque',
-                    lastMessage: {
-                        sender: '87991646160',
-                        content: 'Oi amor',
-                        date: '10/08/2024',
-                    },
-                    messages: [
-                        {
+    useEffect(() => {
+        const fetchContacts = async () => {
+            try {
+                //   const response = await fetch('/api/contacts');
+                //   const data: Contact[] = await response.json();
+                const arr = [
+                    {
+                        id: '87991646160',
+                        name: 'Brenda Duque',
+                        lastMessage: {
                             sender: '87991646160',
                             content: 'Oi amor',
                             date: '10/08/2024',
                         },
-                        {
-                            sender: '87981048125',
-                            content: 'Oi linda',
+                        messages: [
+                            {
+                                sender: '87991646160',
+                                content: 'Oi amor',
+                                date: '10/08/2024',
+                            },
+                            {
+                                sender: '87981048125',
+                                content: 'Oi linda',
+                                date: '10/08/2024',
+                            },
+                        ],
+                    },
+                    {
+                        id: '1',
+                        name: 'Job Doe #1',
+                        lastMessage: {
+                            sender: '1',
+                            content: 'E aí, tudo bem?',
                             date: '10/08/2024',
                         },
-                    ],
-                },
-                {
-                    id: '1',
-                    name: 'Job Doe #1',
-                    lastMessage: {
-                        sender: '1',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
                     },
-                },
-                {
-                    id: '2',
-                    name: 'Job Doe #2',
-                    lastMessage: {
-                        sender: '2',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '2',
+                        name: 'Job Doe #2',
+                        lastMessage: {
+                            sender: '2',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '3',
-                    name: 'Job Doe #3',
-                    lastMessage: {
-                        sender: '3',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '3',
+                        name: 'Job Doe #3',
+                        lastMessage: {
+                            sender: '3',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '4',
-                    name: 'Job Doe #4',
-                    lastMessage: {
-                        sender: '4',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '4',
+                        name: 'Job Doe #4',
+                        lastMessage: {
+                            sender: '4',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '5',
-                    name: 'Job Doe #5',
-                    lastMessage: {
-                        sender: '5',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '5',
+                        name: 'Job Doe #5',
+                        lastMessage: {
+                            sender: '5',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '6',
-                    name: 'Job Doe #6',
-                    lastMessage: {
-                        sender: '6',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '6',
+                        name: 'Job Doe #6',
+                        lastMessage: {
+                            sender: '6',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '7',
-                    name: 'Job Doe #7',
-                    lastMessage: {
-                        sender: '7',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '7',
+                        name: 'Job Doe #7',
+                        lastMessage: {
+                            sender: '7',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '8',
-                    name: 'Job Doe #8',
-                    lastMessage: {
-                        sender: '8',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '8',
+                        name: 'Job Doe #8',
+                        lastMessage: {
+                            sender: '8',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '9',
-                    name: 'Job Doe #9',
-                    lastMessage: {
-                        sender: '9',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '9',
+                        name: 'Job Doe #9',
+                        lastMessage: {
+                            sender: '9',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-                {
-                    id: '10',
-                    name: 'Job Doe #10',
-                    lastMessage: {
-                        sender: '10',
-                        content: 'E aí, tudo bem?',
-                        date: '10/08/2024',
+                    {
+                        id: '10',
+                        name: 'Job Doe #10',
+                        lastMessage: {
+                            sender: '10',
+                            content: 'E aí, tudo bem?',
+                            date: '10/08/2024',
+                        },
                     },
-                },
-            ]
-            const contactsMap = new Map<string, Contact>()
-            arr.forEach(contact => {
-                contactsMap.set(contact.id, contact)
-            })
-            setContacts(contactsMap)
-            setLoading(false)
-        } catch (error) {
-            console.error('Failed to fetch contacts', error)
+                ]
+                const contactsMap = new Map<string, Contact>()
+                arr.forEach(contact => {
+                    contactsMap.set(contact.id, contact)
+                })
+                setContacts(contactsMap)
+                // setLoading(false)
+            } catch (error) {
+                console.error('Failed to fetch contacts', error)
+            }
         }
-    }
 
-    useEffect(() => {
         fetchContacts()
     }, [setContacts])
 

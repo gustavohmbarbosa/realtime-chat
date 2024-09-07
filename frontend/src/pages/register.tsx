@@ -19,9 +19,9 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState<any>({})
 
-    const submitForm = event => {
+    const submitForm = (event: any) => {
         event.preventDefault()
 
         register({
@@ -51,7 +51,7 @@ const Register = () => {
                             type="text"
                             value={name}
                             className="block mt-1 w-full"
-                            onChange={event => setName(event.target.value)}
+                            onChange={(event: any) => setName(event.target.value)}
                             required
                             autoFocus
                         />
@@ -68,7 +68,7 @@ const Register = () => {
                             type="email"
                             value={email}
                             className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
+                            onChange={(event: any) => setEmail(event.target.value)}
                             required
                         />
 
@@ -84,7 +84,7 @@ const Register = () => {
                             type="password"
                             value={password}
                             className="block mt-1 w-full"
-                            onChange={event => setPassword(event.target.value)}
+                            onChange={(event: any) => setPassword(event.target.value)}
                             required
                             autoComplete="new-password"
                         />
@@ -106,7 +106,7 @@ const Register = () => {
                             type="password"
                             value={passwordConfirmation}
                             className="block mt-1 w-full"
-                            onChange={event =>
+                            onChange={(event: any) =>
                                 setPasswordConfirmation(event.target.value)
                             }
                             required

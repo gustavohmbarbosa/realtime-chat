@@ -26,14 +26,14 @@ const Login = () => {
     const [status, setStatus] = useState<any>(null)
 
     useEffect(() => {
-        if (router.query.reset?.length > 0 && errors.length === 0) {
+        if (router.query.reset && router.query.reset.length > 0 && errors.length === 0) {
             setStatus(router.query.reset as string)
         } else {
             setStatus(null)
         }
-    })
+    }, [setStatus, router.query.reset, errors])
 
-    const submitForm = async event => {
+    const submitForm = async (event: any) => {
         event.preventDefault()
 
         login({
@@ -66,7 +66,7 @@ const Login = () => {
                             type="email"
                             value={email}
                             className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
+                            onChange={(event: any) => setEmail(event.target.value)}
                             required
                             autoFocus
                         />
@@ -83,7 +83,7 @@ const Login = () => {
                             type="password"
                             value={password}
                             className="block mt-1 w-full"
-                            onChange={event => setPassword(event.target.value)}
+                            onChange={(event: any) => setPassword(event.target.value)}
                             required
                             autoComplete="current-password"
                         />

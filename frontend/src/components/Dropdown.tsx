@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
 const Dropdown = ({
@@ -7,7 +7,7 @@ const Dropdown = ({
     contentClasses = 'py-1 bg-white',
     trigger,
     children,
-}) => {
+}: any) => {
     let alignmentClasses
 
     switch (width) {
@@ -28,8 +28,6 @@ const Dropdown = ({
             alignmentClasses = 'origin-top-right right-0'
             break
     }
-
-    const [open, setOpen] = useState(false)
 
     return (
         <Menu as="div" className="relative">
