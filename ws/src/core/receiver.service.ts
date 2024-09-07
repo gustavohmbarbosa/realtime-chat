@@ -26,7 +26,7 @@ export class ReceiverService {
           case 'authenticate':
             this.authenticateMessage(message);
             break;
-          case 'message':
+          case 'new-message':
             this.sendMessage(message);
             break;
           default:

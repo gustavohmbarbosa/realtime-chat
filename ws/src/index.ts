@@ -21,6 +21,7 @@ import { MessageQueueWorker } from "./message-queue/message-queue-worker";
 // TODO: think about TTL for client connections
 // TODO: think about add a limit of connected clients per user account
 // TODO: add encryption to message content
+// TODO: create "last message table"
 
 process.on("unhandledRejection", (reason, promise) => {
   console.error("Unhandled Rejection at:", promise, "reason:", reason);
